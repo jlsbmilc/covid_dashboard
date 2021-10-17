@@ -1,4 +1,4 @@
 streamlit
-python
+python=3.9.7
 pandas
 pyplot
