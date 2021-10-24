@@ -5,6 +5,16 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from datetime import date
 
+
+st.set_page_config(page_title="JL COVID dashboard")
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 df_raw = pd.read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
 cols = [s for s in list(df_raw.columns) if "total" in s]
 other_cums = ["stringency_index", "people_fully_vaccinated"]
