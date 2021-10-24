@@ -66,11 +66,11 @@ st.subheader("Location: "+selection)
 
 fig = make_subplots(specs=[[{"secondary_y": True}]])
 fig.add_trace(
-    go.Bar(x=data['date'], y=data['new_cases_smoothed'], name="Daily new cases in time"),
+    go.Bar(x=data['date'], y=data['new_cases_smoothed'], name="Daily new cases in time",marker=dict(color='blue',line=dict(color='blue'))),
     secondary_y=False
 )
 fig.add_trace(
-    go.Scatter(x=data['date'], y=data['total_cases'], name="Total cases in time", mode='lines'),
+    go.Scatter(x=data['date'], y=data['total_cases'], name="Total cases in time", mode='lines', marker=dict(color='red',line=dict(color='red'))),
     secondary_y=True
 )
 st.plotly_chart(fig)
@@ -80,11 +80,11 @@ st.subheader("Figure 2. COVID cases in time daily and stringency level")
 st.subheader("Location: "+selection)
 fig2 = make_subplots(specs=[[{"secondary_y": True}]])
 fig2.add_trace(
-    go.Bar(x=data['date'], y=data['new_cases_smoothed'], name="Daily new cases in time"),
+    go.Bar(x=data['date'], y=data['new_cases_smoothed'], name="Daily new cases in time", marker=dict(color='blue',line=dict(color='blue'))),
     secondary_y=False
 )
 fig2.add_trace(
-    go.Scatter(x=data['date'], y=data['stringency_index'], name="Stringency index in time", mode='lines'),
+    go.Scatter(x=data['date'], y=data['stringency_index'], name="Stringency index in time", mode='lines', marker=dict(color='red',line=dict(color='red'))),
     secondary_y=True
 )
 st.plotly_chart(fig2)
@@ -128,11 +128,11 @@ st.subheader("Location: "+selection)
 
 fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 fig3.add_trace(
-    go.Scatter(x=data_leth['date'], y=data_leth['lethality'], name = 'lethality', mode='lines'),
+    go.Scatter(x=data_leth['date'], y=data_leth['lethality'], name = 'lethality', mode='lines', marker=dict(color='blue',line=dict(color='blue'))),
     secondary_y=False
 )
 fig3.add_trace(
-    go.Scatter(x=data_leth['date'], y=data_leth[selected_factor], name = selected_factor, mode='lines'),
+    go.Scatter(x=data_leth['date'], y=data_leth[selected_factor], name = selected_factor, mode='lines', marker=dict(color='red',line=dict(color='red'))),
     secondary_y=True 
 )
 st.plotly_chart(fig3)
