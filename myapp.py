@@ -41,15 +41,15 @@ last_day = data['date_val'].max()
 
 population = int(data['population'].unique()[0])
 total_cases = int(data['total_cases'].iloc[-1])
-#people_vaccinated = int(data['people_fully_vaccinated'].iloc[-1])
+people_vaccinated = int(data['people_fully_vaccinated'].iloc[-1])
 last_stringency_index = data['stringency_index'].iloc[-1]
 
 st.sidebar.write("Location:", selection)
 st.sidebar.write("Population:", f"{population:,}")
 st.sidebar.write("Last date reported:", last_day)
 st.sidebar.write("Total cases:", f"{total_cases:,}")
-#st.sidebar.write("People fully vaccinated:", people_vaccinated)
-st.sidebar.write("Current stringency index (scale 0-100):", last_stringency_index)
+st.sidebar.write("People fully vaccinated:", f"{people_vaccinated:,}")
+st.sidebar.write("Current stringency index (0-100):", last_stringency_index)
 
 st.subheader("Figure 1. Cumulative and daily COVID19 cases in time")
 st.subheader("Location: "+selection)
@@ -111,7 +111,7 @@ considered_factors = ['total_cases', 'new_cases',
        'people_fully_vaccinated_per_hundred', 'total_boosters_per_hundred',
        'new_vaccinations_smoothed_per_million', 'stringency_index']
 
-selected_factor = st.selectbox("Select a factor:", considered_factors)
+selected_factor = st.selectbox("Select a factor:", considered_factors,index=considered_factors.index("people_fully_vaccinated"))
 
 fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 fig3.add_trace(
