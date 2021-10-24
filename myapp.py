@@ -86,7 +86,7 @@ st.write("Lethality defined as:")
 st.latex(r'''
 lethality = \frac{\text{new deaths}}{\text{new cases}}
 ''')
-st.subheader("Location: "+selection)
+
 selected_country = selection
 data_leth = df_raw[df_raw['location'] == selection]
 data_leth = data_leth[data_leth['total_cases'] != 0]
@@ -112,6 +112,9 @@ considered_factors = ['total_cases', 'new_cases',
        'new_vaccinations_smoothed_per_million', 'stringency_index']
 
 selected_factor = st.selectbox("Select a factor:", considered_factors,index=considered_factors.index("people_fully_vaccinated"))
+
+st.subheader("Figure 3. Lethality in time vs "+selected_factor)
+st.subheader("Location: "+selection)
 
 fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 fig3.add_trace(
