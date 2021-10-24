@@ -136,3 +136,10 @@ fig3.add_trace(
     secondary_y=True 
 )
 st.plotly_chart(fig3)
+
+df_cum = df_raw[df_raw['location'].isin(micro_locations)]
+df_cum = df_cum.groupby(['location']).max().reset_index()
+
+st.subheader("Figure 4. Total cases per country")
+fig4 = px.choropleth(df_cum, locations = 'iso_code', color='total_cases_per_million', hover_name = df_cum['location'], color_continuous_scale="Peach", projection = 'natural earth')
+st.plotly_chart(fig4)
